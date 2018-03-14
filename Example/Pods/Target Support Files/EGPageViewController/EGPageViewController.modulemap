@@ -1,0 +1,6 @@
+framework module EGPageViewController {
+  umbrella header "EGPageViewController-umbrella.h"
+
+  export *
+  module * { export * }
+}
