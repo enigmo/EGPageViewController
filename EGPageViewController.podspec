@@ -12,6 +12,9 @@ UIPageViewcontroller with built in synchronized tabs.
   s.author           = { 'monolithic-adam' => 'adamjhen@gmail.com' }
   s.source           = { :git => 'https://github.com/enigmo/EGPageViewController.git', :tag => s.version.to_s }
  
+  s.dependency 'SnapKit'
+  s.dependency 'RxSwift'
+  s.dependency 'RxCocoa'
   s.ios.deployment_target = '8.0'
   s.source_files = 'EGPageViewController/*'
  

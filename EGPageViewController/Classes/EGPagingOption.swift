@@ -17,9 +17,6 @@ public struct EGPagingOption {
     public var textBottomMergin: CGFloat = 13.5
 
     public var font: UIFont {
-        if AppEnvironment.kIPhone5OrLess {
-            return UIFont(name: "HiraginoSans-W6", size: 10) ?? UIFont.boldSystemFont(ofSize: 10)
-        }
         return UIFont(name: "HiraginoSans-W6", size: fontSize) ?? UIFont.boldSystemFont(ofSize: fontSize)
     }
     public var tabHeight: CGFloat { return (textBottomMergin - searchBarBottomMargin) + fontSize + textBottomMergin }
@@ -37,5 +34,5 @@ public struct EGPagingOption {
     //Bottom Line
     public var showsBottomLine: Bool = false
     public var bottomLineHeight: Float = 0.5
-    public var bottomLineColor: UIColor = UIColor.hexStr("d9d9d9", alpha: 1.0)
+    public var bottomLineColor: UIColor = UIColor(red:217.0/255.0, green:217.0/255.0, blue:217.0/255.0, alpha: 1.0)
 }
