@@ -13,7 +13,6 @@ class EGTabBarCell: UICollectionViewCell {
     open var option: EGPagingOption = EGPagingOption()
     let label = UILabel()
     let indicatorBar = UIView()
-    let unreadImageView = UIImageView()
     var disposeBag = DisposeBag()
 
     override init(frame: CGRect) {
@@ -45,18 +44,6 @@ class EGTabBarCell: UICollectionViewCell {
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(option.indicatorHeight)
         }
-
-        unreadImageView.isHidden = true
-        unreadImageView.layer.cornerRadius = 2.5
-        unreadImageView.clipsToBounds = true
-        unreadImageView.image = UIImage(color: UIColor(61, green: 194, blue: 175), rect: CGRect(x: 0, y: 0, width: 5, height: 5))
-        self.contentView.addSubview(unreadImageView)
-        unreadImageView.snp.makeConstraints { [weak self] make in
-            guard let weakSelf = self else { return }
-            make.left.equalTo(weakSelf.label.snp.right).offset(3)
-            make.bottom.equalTo(weakSelf.label.snp.top).offset(2)
-            make.width.height.equalTo(5)
-        }
     }
 
     func setData(title: String, isCurrent: Bool, shouldHighlightText: Bool) {
@@ -79,6 +66,5 @@ class EGTabBarCell: UICollectionViewCell {
             label.text = ""
         }
         indicatorBar.isHidden = true
-        unreadImageView.isHidden = true
     }
 }

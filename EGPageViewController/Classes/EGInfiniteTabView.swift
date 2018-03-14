@@ -124,9 +124,6 @@ extension EGInfiniteTabView: UICollectionViewDataSource, UICollectionViewDelegat
         cell.setData(title: tabs[indexPath.row % tabs.count],
                       isCurrent: (indexPath.row % tabs.count == currentlySelectedTab && shouldUpdate),
                       shouldHighlightText: indexPath.row % tabs.count == currentlySelectedTab)
-        if tabs[indexPath.row % tabs.count] == BMPageViewController.newsTabTitle {
-            cell.unreadImageView.isHidden = !BMNewsManager.sharedManager.isExistUnreadNews.value
-        }
         layoutIfNeeded()
         return cell
     }

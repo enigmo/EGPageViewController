@@ -1,5 +1,5 @@
 use_frameworks!
-
+platform :ios, '8.0'
 target 'EGPageViewController_Example' do
   pod 'EGPageViewController', :path => '../'
 
@@ -8,6 +8,5 @@ target 'EGPageViewController_Example' do
 
     pod 'Quick', '~> 1.2.0'
     pod 'Nimble', '~> 7.0.2'
-    pod 'SnapKit'
   end
 end
