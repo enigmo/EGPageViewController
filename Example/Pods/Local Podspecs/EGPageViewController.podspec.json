@@ -1,0 +1,22 @@
+{
+  "name": "EGPageViewController",
+  "version": "0.1.0",
+  "summary": "A short description of EGPageViewController.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/monolithic-adam/EGPageViewController",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "monolithic-adam": "henry@enigmo.co.jp"
+  },
+  "source": {
+    "git": "https://github.com/monolithic-adam/EGPageViewController.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "EGPageViewController/Classes/**/*"
+}

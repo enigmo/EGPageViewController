@@ -1,0 +1,22 @@
+PODS:
+  - EGPageViewController (0.1.0)
+  - Nimble (7.0.3)
+  - Quick (1.2.0)
+
+DEPENDENCIES:
+  - EGPageViewController (from `../`)
+  - Nimble (~> 7.0.2)
+  - Quick (~> 1.2.0)
+
+EXTERNAL SOURCES:
+  EGPageViewController:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  EGPageViewController: 8710f9e00d67250a1ce8225ba7566a5c2ee74b81
+  Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
+  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+
+PODFILE CHECKSUM: 69bdeb9a7a192f02434309509a02390e6a81912f
+
+COCOAPODS: 1.2.1
