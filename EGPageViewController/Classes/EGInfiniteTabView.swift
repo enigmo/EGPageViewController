@@ -7,7 +7,7 @@
 import UIKit
 import SnapKit
 
-class EGInfiniteTabView: UIView {
+public class EGInfiniteTabView: UIView {
     open var option: EGPagingOption = EGPagingOption()
     let indicatorView = UIView()
     let bottomLineView = UIView(frame: CGRect.zero)
@@ -83,7 +83,7 @@ class EGInfiniteTabView: UIView {
                 self.indicatorView.isHidden = false
                 collectionView
                     .visibleCells
-                    .flatMap { $0 as? EGTabBarCell }
+                    .compactMap { $0 as? EGTabBarCell }
                     .forEach {
                         $0.hideIndicator()
                 }
@@ -118,7 +118,7 @@ class EGInfiniteTabView: UIView {
 
  // MARK: UICollectionViewDataSource
 extension EGInfiniteTabView: UICollectionViewDataSource, UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = (collectionView.dequeueReusableCell(withReuseIdentifier: "EGTabBarCell", for: indexPath) as? EGTabBarCell)!
         cell.option = self.option
         cell.setData(title: tabs[indexPath.row % tabs.count],
@@ -128,15 +128,15 @@ extension EGInfiniteTabView: UICollectionViewDataSource, UICollectionViewDelegat
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return tabs.count * 3 //page tab count * 3
     }
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
 
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         shouldUpdate = true
         updateCollectionViewUserInteractionEnabled(false)
         let adjustedIndex = indexPath.row % tabs.count
@@ -148,7 +148,7 @@ extension EGInfiniteTabView: UICollectionViewDataSource, UICollectionViewDelegat
 }
 
 extension EGInfiniteTabView: UIScrollViewDelegate {
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.isDragging {
             shouldUpdate = true
             indicatorView.isHidden = true
@@ -170,24 +170,24 @@ extension EGInfiniteTabView: UIScrollViewDelegate {
         }
     }
 
-    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         self.onScrollRelease?()
     }
 }
 
 extension EGInfiniteTabView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView,
+    public func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: option.tabWidth, height: option.tabHeight)
     }
-    func collectionView(_ collectionView: UICollectionView,
+    public func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsets.zero
     }
 
-    func collectionView(_ collectionView: UICollectionView,
+    public func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0

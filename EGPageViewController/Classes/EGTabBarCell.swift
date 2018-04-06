@@ -9,7 +9,7 @@ import SnapKit
 import RxSwift
 import RxCocoa
 
-class EGTabBarCell: UICollectionViewCell {
+public class EGTabBarCell: UICollectionViewCell {
     open var option: EGPagingOption = EGPagingOption()
     let label = UILabel()
     let indicatorBar = UIView()
@@ -20,7 +20,7 @@ class EGTabBarCell: UICollectionViewCell {
         commonInit()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -60,7 +60,7 @@ class EGTabBarCell: UICollectionViewCell {
         indicatorBar.isHidden = false
     }
 
-    override func prepareForReuse() {
+    override public func prepareForReuse() {
         self.subviews.filter { $0 is UILabel }.forEach { view in
             guard let label = view as? UILabel else { return }
             label.text = ""

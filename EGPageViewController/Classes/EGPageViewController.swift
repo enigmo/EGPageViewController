@@ -7,7 +7,7 @@
 import UIKit
 import SnapKit
 
-class EGPageViewController: UIPageViewController {
+public class EGPageViewController: UIPageViewController {
     open var option: EGPagingOption = EGPagingOption()
     open var tabItems: [(viewController: UIViewController, title: String)] = []
 
@@ -31,13 +31,13 @@ class EGPageViewController: UIPageViewController {
         self.infiniteTabView = EGInfiniteTabView(option: option)
     }
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isTranslucent = false
         self.view.layoutMargins = UIEdgeInsets(top: option.tabHeight, left: 0, bottom: 0, right: 0)
 
-        let scrollView = view.subviews.flatMap { $0 as? UIScrollView }.first
+        let scrollView = view.subviews.compactMap { $0 as? UIScrollView }.first
         scrollView?.delegate = self
         dataSource = self
         delegate = self
@@ -45,7 +45,7 @@ class EGPageViewController: UIPageViewController {
         setViewControllers([tabItems[defaultIndex].viewController], direction: .forward, animated: false, completion: nil)
         if let infiniteTabView = self.infiniteTabView {
             self.view.addSubview(infiniteTabView)
-            infiniteTabView.tabs = tabItems.flatMap({ $0.title })
+            infiniteTabView.tabs = tabItems.compactMap({ $0.title })
             infiniteTabView.option = option
             infiniteTabView.snp.makeConstraints { make in
                 make.height.equalTo(option.tabHeight)
@@ -96,7 +96,7 @@ class EGPageViewController: UIPageViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
+    override public func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         if let currentIndex = currentIndex {
@@ -104,16 +104,16 @@ class EGPageViewController: UIPageViewController {
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
+    override public func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let currentIndex = currentIndex {
             infiniteTabView?.updateCurrentIndex(index: currentIndex)
         }
     }
 
-    override func viewDidLayoutSubviews() {
+    override public func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        guard let scrollView = view.subviews.flatMap ({ $0 as? UIScrollView }).first else { return }
+        guard let scrollView = view.subviews.compactMap ({ $0 as? UIScrollView }).first else { return }
         scrollView.frame = CGRect(x: scrollView.frame.origin.x,
                                   y: option.tabHeight,
                                   width: scrollView.frame.width,
@@ -134,7 +134,7 @@ extension EGPageViewController: UIScrollViewDelegate {
         return self.view.bounds.width
     }
 
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         guard shouldScrollBar else { return }
 
         infiniteTabView?.updateScrollOffset(index: currentIndex ?? 0, contentOffsetX: scrollView.contentOffset.x - view.frame.width)
@@ -144,20 +144,20 @@ extension EGPageViewController: UIScrollViewDelegate {
 // MARK: - UIPageViewControllerDataSource
 
 extension EGPageViewController: UIPageViewControllerDataSource, UIPageViewControllerDelegate {
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
         return nextViewController(viewController: viewController, isAfter: false)
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
+    public func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
         return nextViewController(viewController: viewController, isAfter: true)
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
+    public func pageViewController(_ pageViewController: UIPageViewController, willTransitionTo pendingViewControllers: [UIViewController]) {
         shouldScrollBar = true
         infiniteTabView?.updateCollectionViewUserInteractionEnabled(false)
     }
 
-    func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
+    public func pageViewController(_ pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
         if let currentIndex = currentIndex, let infiniteTabView = self.infiniteTabView, currentIndex < infiniteTabView.tabs.count, completed {
             infiniteTabView.updateCurrentIndex(index: currentIndex)
             beforeIndex = currentIndex
