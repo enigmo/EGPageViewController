@@ -7,7 +7,7 @@
 import UIKit
 import SnapKit
 
-public class EGPageViewController: UIPageViewController {
+open class EGPageViewController: UIPageViewController {
     open var option: EGPagingOption = EGPagingOption()
     open var tabItems: [(viewController: UIViewController, title: String)] = []
 
@@ -31,7 +31,7 @@ public class EGPageViewController: UIPageViewController {
         self.infiniteTabView = EGInfiniteTabView(option: option)
     }
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         self.navigationController?.navigationBar.isTranslucent = false
@@ -96,7 +96,7 @@ public class EGPageViewController: UIPageViewController {
         }
     }
 
-    override public func viewWillAppear(_ animated: Bool) {
+    override open func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
         if let currentIndex = currentIndex {
@@ -104,14 +104,14 @@ public class EGPageViewController: UIPageViewController {
         }
     }
 
-    override public func viewDidAppear(_ animated: Bool) {
+    override open func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         if let currentIndex = currentIndex {
             infiniteTabView?.updateCurrentIndex(index: currentIndex)
         }
     }
 
-    override public func viewDidLayoutSubviews() {
+    override open func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         guard let scrollView = view.subviews.compactMap ({ $0 as? UIScrollView }).first else { return }
         scrollView.frame = CGRect(x: scrollView.frame.origin.x,

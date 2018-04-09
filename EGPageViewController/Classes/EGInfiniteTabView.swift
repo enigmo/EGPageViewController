@@ -7,7 +7,7 @@
 import UIKit
 import SnapKit
 
-public class EGInfiniteTabView: UIView {
+open class EGInfiniteTabView: UIView {
     open var option: EGPagingOption = EGPagingOption()
     let indicatorView = UIView()
     let bottomLineView = UIView(frame: CGRect.zero)
