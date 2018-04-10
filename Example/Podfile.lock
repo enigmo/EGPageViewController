@@ -17,10 +17,10 @@ DEPENDENCIES:
 
 EXTERNAL SOURCES:
   EGPageViewController:
-    :path: "../"
+    :path: ../
 
 SPEC CHECKSUMS:
-  EGPageViewController: ed661d1458a4ce1a187fef94b168952b8f38dfb1
+  EGPageViewController: e3e53cb76ca5627ec772c326d47599de12e3b4f3
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
@@ -29,4 +29,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 70109d734165f164d6d7a6853ebbb9869682041d
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.4.0

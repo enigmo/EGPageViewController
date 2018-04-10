@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary          = 'UIPageViewcontroller with built in synchronized tabs.'
  
   s.description      = <<-DESC
-UIPageViewcontroller with built in synchronized tabs.
+UIPageViewcontroller with built in synchronized tabs. Lacking a solution that matched our needs we made our own TabBar/UIPageViewController pair with infinite scrolling.
                        DESC
  
   s.homepage         = 'http://www.enigmo.co.jp'
@@ -16,6 +16,6 @@ UIPageViewcontroller with built in synchronized tabs.
   s.dependency 'RxSwift'
   s.dependency 'RxCocoa'
   s.ios.deployment_target = '8.0'
-  s.source_files = 'EGPageViewController/*'
+  s.source_files = 'EGPageViewController/**/*'
  
 end
