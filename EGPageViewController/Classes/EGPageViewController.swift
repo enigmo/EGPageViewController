@@ -25,7 +25,7 @@ open class EGPageViewController: UIPageViewController {
         return tabItems.map { $0.viewController }.index(of: viewController)
     }
 
-    convenience init(option: EGPagingOption) {
+    public convenience init(option: EGPagingOption) {
         self.init(transitionStyle: .scroll, navigationOrientation: .horizontal, options: nil)
         self.option = option
         self.infiniteTabView = EGInfiniteTabView(option: option)
