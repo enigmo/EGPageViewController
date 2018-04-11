@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import EGPageViewController
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        let pageController = EGPageViewController(option: EGPagingOption())
+        pageController.tabItems = [(RandomColorViewController(), "Page 1"), (RandomColorViewController(), "Page 2"), (RandomColorViewController(), "Page 3"), (RandomColorViewController(), "Page 4")]
+        let navController = UINavigationController(rootViewController: pageController)
+        window?.rootViewController = navController
+
         return true
     }
 

@@ -20,7 +20,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  EGPageViewController: e3e53cb76ca5627ec772c326d47599de12e3b4f3
+  EGPageViewController: 14a669bb7552df7436c52ee4c649543506d7295c
   Nimble: 7f5a9c447a33002645a071bddafbfb24ea70e0ac
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
   RxCocoa: d88ba0f1f6abf040011a9eb4b539324fc426843a
